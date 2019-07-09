@@ -8,4 +8,8 @@ app.get('/convert/rgb-to-hsl', (req, res) => {
     res.send(convert.rgb.hsl(rgbColor))
 });
 
+app.get('/convert/colorname-to-rgb', (req, res) => res.send(
+    convert.keyword.rgb(req.query.color)
+));
+
 app.listen(port, () => console.log(`ColorConverter is running on port ${port}!`));
