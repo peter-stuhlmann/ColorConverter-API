@@ -12,4 +12,9 @@ app.get('/convert/colorname-to-rgb', (req, res) => res.send(
     convert.keyword.rgb(req.query.color)
 ));
 
+app.get('/convert/rgb-to-hex', (req, res) => {
+    let rgbColor = req.query.color.split(',').map(colorValue => parseInt(colorValue));
+    res.send(convert.rgb.hex(rgbColor))
+});
+
 app.listen(port, () => console.log(`ColorConverter is running on port ${port}!`));
