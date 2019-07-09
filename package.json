@@ -18,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/peter-stuhlmann/ColorConverter-API/issues"
   },
-  "homepage": "https://github.com/peter-stuhlmann/ColorConverter-API"
+  "homepage": "https://github.com/peter-stuhlmann/ColorConverter-API",
+  "dependencies": {
+    "color-convert": "^2.0.0"
+  }
 }
