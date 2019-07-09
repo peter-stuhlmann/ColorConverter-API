@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/peter-stuhlmann/ColorConverter-API",
   "dependencies": {
-    "color-convert": "^2.0.0"
+    "color-convert": "^2.0.0",
+    "express": "^4.17.1"
   }
 }
