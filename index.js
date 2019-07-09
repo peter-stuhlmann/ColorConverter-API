@@ -17,4 +17,8 @@ app.get('/convert/rgb-to-hex', (req, res) => {
     res.send(convert.rgb.hex(rgbColor))
 });
 
+app.get('/convert/hex-to-rgb', (req, res) => res.send(
+    convert.hex.rgb(req.query.color)
+));
+
 app.listen(port, () => console.log(`ColorConverter is running on port ${port}!`));
