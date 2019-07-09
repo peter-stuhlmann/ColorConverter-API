@@ -3,6 +3,10 @@ const app = express();
 const port = 3112;
 const convert = require('color-convert');
 
+app.get('/', (req, res) => {
+    res.redirect('https://github.com/peter-stuhlmann/ColorConverter-API');
+});
+
 app.get('/convert/rgb-to-hsl', (req, res) => {
     let rgbColor = req.query.color.split(',').map(colorValue => parseInt(colorValue));
     res.send(convert.rgb.hsl(rgbColor))
