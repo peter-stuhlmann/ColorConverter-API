@@ -1,28 +1,12 @@
 const express = require('express');
 const app = express();
 const port = 3112;
-const convert = require('color-convert');
+const routerConvert = require('./converter/converter');
 
 app.get('/', (req, res) => {
     res.redirect('https://github.com/peter-stuhlmann/ColorConverter-API');
 });
 
-app.get('/convert/rgb-to-hsl', (req, res) => {
-    let rgbColor = req.query.color.split(',').map(colorValue => parseInt(colorValue));
-    res.send(convert.rgb.hsl(rgbColor))
-});
-
-app.get('/convert/colorname-to-rgb', (req, res) => res.send(
-    convert.keyword.rgb(req.query.color)
-));
-
-app.get('/convert/rgb-to-hex', (req, res) => {
-    let rgbColor = req.query.color.split(',').map(colorValue => parseInt(colorValue));
-    res.send(convert.rgb.hex(rgbColor))
-});
-
-app.get('/convert/hex-to-rgb', (req, res) => res.send(
-    convert.hex.rgb(req.query.color)
-));
+app.use('/convert', routerConvert);
 
 app.listen(port, () => console.log(`ColorConverter is running on port ${port}!`));
