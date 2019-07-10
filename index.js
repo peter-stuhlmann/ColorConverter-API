@@ -2,6 +2,9 @@ const express = require('express');
 const app = express();
 const port = 3112;
 const routerConvert = require('./converter/converter');
+const logger = require('./logger');
+
+app.use(logger);
 
 app.get('/', (req, res) => {
     res.redirect('https://github.com/peter-stuhlmann/ColorConverter-API');
