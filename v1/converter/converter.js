@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const convert = require('color-convert');
-const errorHandler = require('../messages');
+const errorHandler = require('../helpers/messages');
 
 router.use(errorHandler);
 

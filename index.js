@@ -1,8 +1,8 @@
 const express = require('express');
 const app = express();
 const port = 3112;
-const routerConvert = require('./converter/converter');
-const logger = require('./logger');
+const routerConvert = require('./v1/converter/converter');
+const logger = require('./v1/helpers/logger');
 
 app.use(logger);
 
