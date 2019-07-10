@@ -1,15 +1,17 @@
 const express = require('express');
 const app = express();
 const port = 3112;
-const routerConvert = require('./v1/converter/converter');
-const logger = require('./v1/helpers/logger');
-
-app.use(logger);
+const routerV1 = require('./v1/v1');
+const logger = require('./helpers/logger');
+const errorHandler = require('./helpers/messages');
 
 app.get('/', (req, res) => {
-    res.redirect('https://github.com/peter-stuhlmann/ColorConverter-API');
+    res.redirect('/v1');
 });
 
-app.use('/convert', routerConvert);
+app.use('/v1', routerV1);
+
+app.use(logger);
+app.use(errorHandler);
 
 app.listen(port, () => console.log(`ColorConverter is running on port ${port}!`));

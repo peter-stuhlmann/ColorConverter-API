@@ -1,9 +1,6 @@
 const express = require('express');
 const router = express.Router();
 const convert = require('color-convert');
-const errorHandler = require('../helpers/messages');
-
-router.use(errorHandler);
 
 router.get('/rgb-to-hsl', (req, res, next) => {
     let rgbColor = req.query.color.split(',').map(colorValue => parseInt(colorValue));
