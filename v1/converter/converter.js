@@ -2,26 +2,29 @@ const express = require('express');
 const router = express.Router();
 const convert = require('color-convert');
 
-router.get('/rgb-to-hsl', (req, res, next) => {
+router.get('/rgb-to-hsl', (req, res) => {
+    const rgbColor = req.query.color.split(',').map(colorValue => parseInt(colorValue));
+    const colorOutput = convert.rgb.hsl(rgbColor);
+    const [hue, saturation, luminance] = colorOutput;
+    return res.json({ hue, saturation, luminance });
+});
+
+router.get('/colorname-to-rgb', (req, res) => {
+    const colorOutput = convert.keyword.rgb(req.query.color);
+    const [red, green, blue] = colorOutput;
+    return res.json({ red, green, blue });    
+});
+
+router.get('/rgb-to-hex', (req, res) => {
     let rgbColor = req.query.color.split(',').map(colorValue => parseInt(colorValue));
-    res.send(convert.rgb.hsl(rgbColor))
-    next()
+    const hex = convert.rgb.hex(rgbColor);
+    return res.json({ hex })
 });
 
-router.get('/colorname-to-rgb', (req, res, next) => {
-    res.send(convert.keyword.rgb(req.query.color))
-    next()
-});
-
-router.get('/rgb-to-hex', (req, res, next) => {
-    let rgbColor = req.query.color.split(',').map(colorValue => parseInt(colorValue));
-    res.send(convert.rgb.hex(rgbColor))
-    next()
-});
-
-router.get('/hex-to-rgb', (req, res, next) => {
-    res.send(convert.hex.rgb(req.query.color))
-    next()
+router.get('/hex-to-rgb', (req, res) => {
+    const colorOutput = convert.hex.rgb(req.query.color);
+    const [red, green, blue] = colorOutput;
+    return res.json({ red, green, blue })
 });
 
 module.exports = router
