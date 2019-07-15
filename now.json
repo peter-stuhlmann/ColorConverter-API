@@ -1,0 +1,14 @@
+{
+    "version": 2,
+    "name": "color-converter-api",
+    "builds": [
+        { "src": "index.js", "use": "@now/node" }
+    ],
+    "routes": [{ 
+        "src": "/(.*)", 
+        "dest": "/index.js", 
+        "headers": { 
+            "cache-control": "s-maxage=31536000,immutable" 
+        } 
+    }]
+}
