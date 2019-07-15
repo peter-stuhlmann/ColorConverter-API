@@ -14,15 +14,41 @@
 
 **Convert RGB to HSL**
 > https://color-converter-api.peter-stuhlmann-webentwicklung.de/v1/convert/rgb-to-hsl?color=25,25,112
+```
+{
+    "hue":240,
+    "saturation":64,
+    "luminance":27
+}
+```
 
 **Convert color name to RGB**
 > https://color-converter-api.peter-stuhlmann-webentwicklung.de/v1/convert/colorname-to-rgb?color=midnightblue
+```
+{
+    "red":25,
+    "green":25,
+    "blue":112
+}
+```
 
 **Convert RGB to HEX**
 > https://color-converter-api.peter-stuhlmann-webentwicklung.de/v1/convert/rgb-to-hex?color=25,25,112
+```
+{
+    "hex":"191970"
+}
+```
 
 **Convert HEX to RGB**
 > https://color-converter-api.peter-stuhlmann-webentwicklung.de/v1/convert/hex-to-rgb?color=191970
+```
+{
+    "red":25,
+    "green":25,
+    "blue":112
+}
+```
 
 
 ---
