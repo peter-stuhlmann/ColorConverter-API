@@ -13,7 +13,7 @@
 ![request](https://img.shields.io/badge/GET-orange.svg) &nbsp; To convert the colors, use the following get requests. You will get the response in JSON format. 
 
 **Convert RGB to HSL**
-> https://color-converter-api.peter-stuhlmann-webentwicklung.de/v1/convert/rgb-to-hsl?color=25,25,112
+> [https://color-converter.com/v1/convert/rgb-to-hsl?color=25,25,112](https://color-converter.com/v1/convert/rgb-to-hsl?color=25,25,112)
 ```
 {
     "hue":240,
@@ -23,7 +23,7 @@
 ```
 
 **Convert color name to RGB**
-> https://color-converter-api.peter-stuhlmann-webentwicklung.de/v1/convert/colorname-to-rgb?color=midnightblue
+> [https://color-converter.com/v1/convert/colorname-to-rgb?color=midnightblue](https://color-converter.com/v1/convert/colorname-to-rgb?color=midnightblue)
 ```
 {
     "red":25,
@@ -33,7 +33,7 @@
 ```
 
 **Convert RGB to HEX**
-> https://color-converter-api.peter-stuhlmann-webentwicklung.de/v1/convert/rgb-to-hex?color=25,25,112
+> [https://color-converter.com/v1/convert/rgb-to-hex?color=25,25,112](https://color-converter.com/v1/convert/colorname-to-rgb?color=midnightblue)
 ```
 {
     "hex":"191970"
@@ -41,7 +41,7 @@
 ```
 
 **Convert HEX to RGB**
-> https://color-converter-api.peter-stuhlmann-webentwicklung.de/v1/convert/hex-to-rgb?color=191970
+> [https://color-converter.com/v1/convert/hex-to-rgb?color=191970](https://color-converter.com/v1/convert/colorname-to-rgb?color=midnightblue)
 ```
 {
     "red":25,
