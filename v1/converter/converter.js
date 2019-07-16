@@ -25,6 +25,11 @@ router.get('/colorname-to-rgb', (req, res) => {
     return res.json({ red, green, blue });    
 });
 
+router.get('/rgb-to-colorname', (req, res) => {
+    const colorOutput = convert.rgb.keyword(req.query.color);
+    return res.json({ colorOutput });    
+});
+
 router.get('/rgb-to-hex', (req, res) => {
     let rgbColor = req.query.color.split(',').map(colorValue => parseInt(colorValue));
     const hex = convert.rgb.hex(rgbColor);
