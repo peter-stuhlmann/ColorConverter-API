@@ -22,6 +22,16 @@
 }
 ```
 
+**Convert HSL to RGB**
+> [https://color-converter.com/v1/convert/hsl-to-rgb?color=240,64,27](https://color-converter.com/v1/convert/rgb-to-hsl?color=240,64,27)
+```
+{
+    "red":25,
+    "green":25,
+    "blue":113
+}
+```
+
 **Convert color name to RGB**
 > [https://color-converter.com/v1/convert/colorname-to-rgb?color=midnightblue](https://color-converter.com/v1/convert/colorname-to-rgb?color=midnightblue)
 ```
@@ -29,6 +39,14 @@
     "red":25,
     "green":25,
     "blue":112
+}
+```
+
+**Convert color name to RGB**
+> [https://color-converter.com/v1/convert/rgb-to-colorname?color=25,25,112](https://color-converter.com/v1/convert/rgb-to-colorname?color=25,25,112)
+```
+{
+    "colorname":"midnightblue"
 }
 ```
 
