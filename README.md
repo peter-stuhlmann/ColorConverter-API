@@ -10,64 +10,47 @@
 ---
 
 ## Requests 
-![request](https://img.shields.io/badge/GET-orange.svg) &nbsp; To convert the colors, use the following get requests. You will get the response in JSON format. 
+![request](https://img.shields.io/badge/GET-orange.svg) &nbsp; To convert the colors, use the following get requests. You will get the response in JSON format.
+
+**Convert RGB**
+[https://color-converter.com/v1/convert/rgb?color=25,25,112](https://color-converter.com/v1/convert/rgb?color=25,25,112)
+
+```
+{
+    "colorname": "midnightblue",
+    "hex": "191970",
+    "hsl": {
+        "hue": 240,
+        "saturation": 64,
+        "luminance": 27
+    },
+    "rgb": {
+        "red": 25,
+        "green": 25,
+        "blue": 112
+    }
+}
+```
+
+**Each of the following requests returns only one value:**
 
 **Convert RGB to HSL**
-> [https://color-converter.com/v1/convert/rgb-to-hsl?color=25,25,112](https://color-converter.com/v1/convert/rgb-to-hsl?color=25,25,112)
-```
-{
-    "hue":240,
-    "saturation":64,
-    "luminance":27
-}
-```
+[https://color-converter.com/v1/convert/rgb-to-hsl?color=25,25,112](https://color-converter.com/v1/convert/rgb-to-hsl?color=25,25,112)
 
 **Convert HSL to RGB**
-> [https://color-converter.com/v1/convert/hsl-to-rgb?color=240,64,27](https://color-converter.com/v1/convert/rgb-to-hsl?color=240,64,27)
-```
-{
-    "red":25,
-    "green":25,
-    "blue":113
-}
-```
+[https://color-converter.com/v1/convert/hsl-to-rgb?color=240,64,27](https://color-converter.com/v1/convert/rgb-to-hsl?color=240,64,27)
 
 **Convert color name to RGB**
-> [https://color-converter.com/v1/convert/colorname-to-rgb?color=midnightblue](https://color-converter.com/v1/convert/colorname-to-rgb?color=midnightblue)
-```
-{
-    "red":25,
-    "green":25,
-    "blue":112
-}
-```
+[https://color-converter.com/v1/convert/colorname-to-rgb?color=midnightblue](https://color-converter.com/v1/convert/colorname-to-rgb?color=midnightblue)
 
-**Convert color name to RGB**
-> [https://color-converter.com/v1/convert/rgb-to-colorname?color=25,25,112](https://color-converter.com/v1/convert/rgb-to-colorname?color=25,25,112)
-```
-{
-    "colorname":"midnightblue"
-}
-```
+**Convert RGB to color name**
+[https://color-converter.com/v1/convert/rgb-to-colorname?color=25,25,112](https://color-converter.com/v1/convert/rgb-to-colorname?color=25,25,112)
 
 **Convert RGB to HEX**
-> [https://color-converter.com/v1/convert/rgb-to-hex?color=25,25,112](https://color-converter.com/v1/convert/colorname-to-rgb?color=midnightblue)
-```
-{
-    "hex":"191970"
-}
-```
+[https://color-converter.com/v1/convert/rgb-to-hex?color=25,25,112](https://color-converter.com/v1/convert/colorname-to-rgb?color=midnightblue)
 
 **Convert HEX to RGB**
-> [https://color-converter.com/v1/convert/hex-to-rgb?color=191970](https://color-converter.com/v1/convert/colorname-to-rgb?color=midnightblue)
-```
-{
-    "red":25,
-    "green":25,
-    "blue":112
-}
-```
-
+[https://color-converter.com/v1/convert/hex-to-rgb?color=191970](https://color-converter.com/v1/convert/colorname-to-rgb?color=midnightblue)
 
 ---
 
