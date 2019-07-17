@@ -5,6 +5,37 @@ const errorHandler = require('../../helpers/messages');
 
 router.use(errorHandler);
 
+router.get('/rgb', (req, res) => {
+    const rgbColor = req.query.color.split(',').map(colorValue => parseInt(colorValue));
+    
+    // RGB
+    const [red, green, blue] = rgbColor;
+
+    // HSL
+    const hslOutput = convert.rgb.hsl(rgbColor);
+    const [hue, saturation, luminance] = hslOutput;
+    
+    // HEX
+    const hexOutput = convert.rgb.hex(rgbColor);
+    const hex = hexOutput;
+
+    // COLOR NAME
+    const colorname = convert.rgb.keyword(req.query.color);
+    
+    // Response
+    return res.json(
+        {   
+            colorname,
+            hex,
+            hsl: { hue, saturation, luminance },
+            rgb: { red, green, blue }        
+        }
+    );
+});
+
+
+// Each of the following requests returns only one value:
+
 router.get('/rgb-to-hsl', (req, res) => {
     const rgbColor = req.query.color.split(',').map(colorValue => parseInt(colorValue));
     const colorOutput = convert.rgb.hsl(rgbColor);
