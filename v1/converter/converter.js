@@ -6,9 +6,9 @@ const errorHandler = require('../../helpers/messages');
 router.use(errorHandler);
 
 router.get('/rgb', (req, res) => {
-    const rgbColor = req.query.color.split(',').map(colorValue => parseInt(colorValue));
     
     // RGB
+    const rgbColor = req.query.color.split(',').map(colorValue => parseInt(colorValue));
     const [red, green, blue] = rgbColor;
 
     // HSL
