@@ -10,6 +10,10 @@ app.get('/', (req, res) => {
     res.redirect('/v1');
 });
 
+app.get('/docs', (req, res) => {
+    res.redirect('/v1/docs');
+});
+
 app.use('/v1', routerV1);
 
 app.listen(port, () => console.log(`ColorConverter is running on port ${port}!`));
