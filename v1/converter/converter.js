@@ -61,6 +61,34 @@ router.get('/colorname', (req, res) => {
     );
 });
 
+router.get('/hex', (req, res) => {
+    
+    // HEX
+    const hexOutput = req.query.color;
+    const hex = hexOutput;
+    
+    // COLOR NAME
+    const colorname = convert.hex.keyword(hex);
+
+    // RGB
+    const rgbOutput = convert.hex.rgb(hex);
+    const [red, green, blue] = rgbOutput;
+
+    // HSL
+    const hslOutput = convert.hex.hsl(hex);
+    const [hue, saturation, luminance] = hslOutput;
+    
+    // Response
+    return res.json(
+        {   
+            colorname,
+            hex,
+            hsl: { hue, saturation, luminance },
+            rgb: { red, green, blue }        
+        }
+    );
+});
+
 
 // Each of the following requests returns only one value:
 
