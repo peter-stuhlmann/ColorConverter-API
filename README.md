@@ -32,6 +32,16 @@
 }
 ```
 
+**Convert color name**
+[https://color-converter.com/v1/convert/colorname?color=midnightblue](https://color-converter.com/v1/convert/colorname?color=191970)
+
+**Convert HEX**
+[https://color-converter.com/v1/convert/hex?color=midnightblue](https://color-converter.com/v1/convert/hex?color=191970)
+
+**Convert HSL**
+[https://color-converter.com/v1/convert/hsl?color=240,64,27](https://color-converter.com/v1/convert/hsl?color=240,64,27)
+
+
 **Each of the following requests returns only one value:**
 
 **Convert RGB to HSL**
