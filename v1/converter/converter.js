@@ -9,6 +9,33 @@ router.get('/', (req, res) => {
   const queryString = req.query;
   const urlParams = new URLSearchParams(queryString);
 
+  if (urlParams.has('format')) {
+    const format = req.query.format;
+
+    const hex = req.query.hex ? `#${req.query.hex}` : null;
+    const rgb = req.query.rgb ? `rgb(${req.query.rgb})` : null;
+    const colorname = req.query.colorname ? req.query.colorname : null;
+    const hsl = req.query.hsl ? convertHSL(req.query.hsl) : null;
+    function convertHSL(hsl) {
+      const converted = hsl.split(',').map(colorValue => parseInt(colorValue));
+      converted[1] = converted[1] + '%';
+      converted[2] = converted[2] + '%';
+      return `hsl(${converted.join(',')})`;
+    }
+
+    // convert in hex because hsv and cmyk are not supported in CSS3
+    const cmyk = req.query.cmyk ? `#${convert.cmyk.hex(req.query.cmyk)}` : null;
+    const hsv = req.query.hsv ? `#${convert.hsv.hex(req.query.hsv)}` : null;
+
+    const color = hex || rgb || colorname || hsl || hsv || cmyk;
+
+    if (format === 'svg') {
+      return res.send(
+        `<svg xmlns='http://www.w3.org/2000/svg' style="width:100px" viewBox='0 0 100 100'><rect fill=${color} width='100' height='100'/></svg>`
+      );
+    }
+  }
+
   if (urlParams.has('hex')) {
     // HEX
     const hex = req.query.hex;
