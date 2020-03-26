@@ -33,6 +33,8 @@ router.get('/', (req, res) => {
       return res.send(
         `<svg xmlns='http://www.w3.org/2000/svg' style="width:100px" viewBox='0 0 100 100'><rect fill=${color} width='100' height='100'/></svg>`
       );
+    } else if (format != 'json' && format != 'JSON') {
+      return res.send(`Format is not supported`);
     }
   }
 
