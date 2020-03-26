@@ -7,7 +7,7 @@ router.use(errorHandler);
 
 router.get('/rgb', (req, res) => {
   // RGB
-  const rgb = req.query.color
+  const rgb = req.query.value
     .split(',')
     .map(colorValue => parseInt(colorValue));
   const [red, green, blue] = rgb;
@@ -36,7 +36,7 @@ router.get('/rgb', (req, res) => {
 
 router.get('/colorname', (req, res) => {
   // COLOR NAME
-  const colorname = req.query.color;
+  const colorname = req.query.value;
 
   // CMYK
   const [c, m, y, k] = convert.keyword.cmyk(colorname);
@@ -62,7 +62,7 @@ router.get('/colorname', (req, res) => {
 
 router.get('/hex', (req, res) => {
   // HEX
-  const hex = req.query.color;
+  const hex = req.query.value;
 
   // COLOR NAME
   const colorname = convert.hex.keyword(hex);
@@ -88,7 +88,7 @@ router.get('/hex', (req, res) => {
 
 router.get('/hsl', (req, res) => {
   // HSL
-  const hsl = req.query.color
+  const hsl = req.query.value
     .split(',')
     .map(colorValue => parseInt(colorValue));
   const [hue, saturation, luminance] = hsl;
@@ -117,7 +117,7 @@ router.get('/hsl', (req, res) => {
 
 router.get('/cmyk', (req, res) => {
   // CMYK
-  const cmyk = req.query.color
+  const cmyk = req.query.value
     .split(',')
     .map(colorValue => parseInt(colorValue));
   const [c, m, y, k] = cmyk;
