@@ -3,13 +3,13 @@ const router = express.Router();
 const routerConvert = require('./converter/converter');
 
 router.get('/', (req, res) => {
-    res.redirect('https://github.com/peter-stuhlmann/ColorConverter-API');
+  res.redirect('/v1/convert');
 });
 
 router.get('/docs', (req, res) => {
-    res.redirect('https://github.com/peter-stuhlmann/ColorConverter-API');
+  res.redirect('https://github.com/peter-stuhlmann/ColorConverter-API');
 });
 
 router.use('/convert', routerConvert);
 
-module.exports = router
+module.exports = router;
