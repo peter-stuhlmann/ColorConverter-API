@@ -11,7 +11,7 @@
 
 ## Requests
 
-![request](https://img.shields.io/badge/GET-orange.svg) &nbsp; To convert the colors, use the following get requests. You will get the response in JSON format.
+![request](https://img.shields.io/badge/GET-orange.svg) &nbsp; To convert the colors, use the following get requests. By default you will get the response in JSON format. If you add the query _format=svg_, an SVG of the specified color will be returned.
 
 **Convert RGB**
 [https://color-converter.com/v1/convert?rgb=25,25,112](https://color-converter.com/v1/convert?rgb=25,25,112)
@@ -43,7 +43,8 @@
         "m": 78,
         "y": 0,
         "k": 56
-    }
+    },
+    "image": "https://color-converter.com/v1/convert?rgb=25,25,112&format=svg"
 }
 ```
 
@@ -61,6 +62,11 @@
 
 **Convert CMYK**
 [https://color-converter.com/v1/convert?cmyk=78,78,0,56](https://color-converter.com/v1/convert?cmyk=78,78,0,56)
+
+**Request RGB and get a svg image**
+[https://color-converter.com/v1/convert?rgb=25,25,112&format=svg](https://color-converter.com/v1/convert?rgb=25,25,112&format=svg)
+![screenshot of svg response](/response-example.png)  
+The query _format=svg_ works with all get requests listed above.
 
 ---
 
