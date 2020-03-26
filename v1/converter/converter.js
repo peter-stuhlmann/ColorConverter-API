@@ -7,25 +7,22 @@ router.use(errorHandler);
 
 router.get('/rgb', (req, res) => {
   // RGB
-  const rgbColor = req.query.color
+  const rgb = req.query.color
     .split(',')
     .map(colorValue => parseInt(colorValue));
-  const [red, green, blue] = rgbColor;
-
-  // HSL
-  const hslOutput = convert.rgb.hsl(rgbColor);
-  const [hue, saturation, luminance] = hslOutput;
-
-  // HEX
-  const hexOutput = convert.rgb.hex(rgbColor);
-  const hex = hexOutput;
+  const [red, green, blue] = rgb;
 
   // CMYK
-  const cmyk = convert.rgb.cmyk(rgbColor);
-  const [c, m, y, k] = cmyk;
+  const [c, m, y, k] = convert.rgb.cmyk(rgb);
 
   // COLOR NAME
-  const colorname = convert.rgb.keyword(req.query.color);
+  const colorname = convert.rgb.keyword(rgb);
+
+  // HEX
+  const hex = convert.rgb.hex(rgb);
+
+  // HSL
+  const [hue, saturation, luminance] = convert.rgb.hsl(rgb);
 
   // Response
   return res.json({
@@ -41,21 +38,17 @@ router.get('/colorname', (req, res) => {
   // COLOR NAME
   const colorname = req.query.color;
 
-  // RGB
-  const rgbOutput = convert.keyword.rgb(colorname);
-  const [red, green, blue] = rgbOutput;
-
-  // HSL
-  const hslOutput = convert.keyword.hsl(colorname);
-  const [hue, saturation, luminance] = hslOutput;
+  // CMYK
+  const [c, m, y, k] = convert.keyword.cmyk(colorname);
 
   // HEX
-  const hexOutput = convert.keyword.hex(colorname);
-  const hex = hexOutput;
+  const hex = convert.keyword.hex(colorname);
 
-  // CMYK
-  const cmyk = convert.rgb.cmyk(rgbOutput);
-  const [c, m, y, k] = cmyk;
+  // HSL
+  const [hue, saturation, luminance] = convert.keyword.hsl(colorname);
+
+  // RGB
+  const [red, green, blue] = convert.keyword.rgb(colorname);
 
   // Response
   return res.json({
@@ -69,23 +62,19 @@ router.get('/colorname', (req, res) => {
 
 router.get('/hex', (req, res) => {
   // HEX
-  const hexOutput = req.query.color;
-  const hex = hexOutput;
+  const hex = req.query.color;
 
   // COLOR NAME
   const colorname = convert.hex.keyword(hex);
 
   // RGB
-  const rgbOutput = convert.hex.rgb(hex);
-  const [red, green, blue] = rgbOutput;
+  const [red, green, blue] = convert.hex.rgb(hex);
 
   // HSL
-  const hslOutput = convert.hex.hsl(hex);
-  const [hue, saturation, luminance] = hslOutput;
+  const [hue, saturation, luminance] = convert.hex.hsl(hex);
 
   // CMYK
-  const cmyk = convert.hex.cmyk(hex);
-  const [c, m, y, k] = cmyk;
+  const [c, m, y, k] = convert.hex.cmyk(hex);
 
   // Response
   return res.json({
@@ -99,25 +88,22 @@ router.get('/hex', (req, res) => {
 
 router.get('/hsl', (req, res) => {
   // HSL
-  const hslColor = req.query.color
+  const hsl = req.query.color
     .split(',')
     .map(colorValue => parseInt(colorValue));
-  const [hue, saturation, luminance] = hslColor;
-
-  // HEX
-  const hexOutput = convert.hsl.hex(hslColor);
-  const hex = hexOutput;
-
-  // COLOR NAME
-  const colorname = convert.hex.keyword(hex);
-
-  // RGB
-  const rgbColor = convert.hsl.rgb(hslColor);
-  const [red, green, blue] = rgbColor;
+  const [hue, saturation, luminance] = hsl;
 
   // CMYK
-  const cmyk = convert.hex.cmyk(hex);
-  const [c, m, y, k] = cmyk;
+  const [c, m, y, k] = convert.hsl.cmyk(hsl);
+
+  // COLOR NAME
+  const colorname = convert.hsl.keyword(hsl);
+
+  // HEX
+  const hex = convert.hsl.hex(hsl);
+
+  // RGB
+  const [red, green, blue] = convert.hsl.rgb(hsl);
 
   // Response
   return res.json({
@@ -131,25 +117,22 @@ router.get('/hsl', (req, res) => {
 
 router.get('/cmyk', (req, res) => {
   // CMYK
-  const cmykColor = req.query.color
+  const cmyk = req.query.color
     .split(',')
     .map(colorValue => parseInt(colorValue));
-  const [c, m, y, k] = cmykColor;
-
-  // HSL
-  const hslColor = convert.cmyk.hsl(cmykColor);
-  const [hue, saturation, luminance] = hslColor;
-
-  // HEX
-  const hexOutput = convert.hsl.hex(hslColor);
-  const hex = hexOutput;
+  const [c, m, y, k] = cmyk;
 
   // COLOR NAME
-  const colorname = convert.hex.keyword(hex);
+  const colorname = convert.cmyk.keyword(cmyk);
+
+  // HEX
+  const hex = convert.cmyk.hex(cmyk);
+
+  // HSL
+  const [hue, saturation, luminance] = convert.cmyk.hsl(cmyk);
 
   // RGB
-  const rgbColor = convert.hsl.rgb(hslColor);
-  const [red, green, blue] = rgbColor;
+  const [red, green, blue] = convert.cmyk.rgb(cmyk);
 
   // Response
   return res.json({
