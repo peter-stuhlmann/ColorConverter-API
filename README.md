@@ -18,7 +18,10 @@
 
 ```
 {
-    "colorname": "midnightblue",
+    "color": {
+        "name": "midnightblue",
+        "exact": true
+    },
     "hex": "191970",
     "hsl": {
         "hue": 240,

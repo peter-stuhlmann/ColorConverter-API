@@ -14,7 +14,13 @@ router.get('/', (req, res) => {
     const hex = req.query.hex;
 
     // COLOR NAME
-    const colorname = convert.hex.keyword(hex);
+    const name = convert.hex.keyword(hex);
+
+    const colornameValidator = convert.keyword.hex(name);
+    var exact = true;
+    if (colornameValidator.toLowerCase() != hex) {
+      exact = false;
+    }
 
     // RGB
     const [red, green, blue] = convert.hex.rgb(hex);
@@ -30,7 +36,7 @@ router.get('/', (req, res) => {
 
     // Response
     return res.json({
-      colorname,
+      color: { name, exact },
       hex,
       hsl: { hue, saturation, luminance },
       hsv: { hue, saturation, value },
@@ -50,7 +56,13 @@ router.get('/', (req, res) => {
     const [c, m, y, k] = convert.rgb.cmyk(rgb);
 
     // COLOR NAME
-    const colorname = convert.rgb.keyword(rgb);
+    const name = convert.rgb.keyword(rgb);
+
+    const colornameValidator = convert.keyword.rgb(name);
+    var exact = true;
+    if (colornameValidator.toString() != rgb.toString()) {
+      exact = false;
+    }
 
     // HEX
     const hex = convert.rgb.hex(rgb);
@@ -63,7 +75,7 @@ router.get('/', (req, res) => {
 
     // Response
     return res.json({
-      colorname,
+      color: { name, exact },
       hex,
       hsl: { hue, saturation, luminance },
       hsv: { hue, saturation, value },
@@ -74,26 +86,26 @@ router.get('/', (req, res) => {
 
   if (urlParams.has('colorname')) {
     // COLOR NAME
-    const colorname = req.query.colorname;
+    const name = req.query.colorname;
 
     // CMYK
-    const [c, m, y, k] = convert.keyword.cmyk(colorname);
+    const [c, m, y, k] = convert.keyword.cmyk(name);
 
     // HEX
-    const hex = convert.keyword.hex(colorname);
+    const hex = convert.keyword.hex(name);
 
     // HSL
-    const [hue, saturation, luminance] = convert.keyword.hsl(colorname);
+    const [hue, saturation, luminance] = convert.keyword.hsl(name);
 
     // HSV
-    const value = convert.keyword.hsv(colorname)[2];
+    const value = convert.keyword.hsv(name)[2];
 
     // RGB
-    const [red, green, blue] = convert.keyword.rgb(colorname);
+    const [red, green, blue] = convert.keyword.rgb(name);
 
     // Response
     return res.json({
-      colorname,
+      color: { name },
       hex,
       hsl: { hue, saturation, luminance },
       hsv: { hue, saturation, value },
@@ -113,7 +125,13 @@ router.get('/', (req, res) => {
     const [c, m, y, k] = convert.hsl.cmyk(hsl);
 
     // COLOR NAME
-    const colorname = convert.hsl.keyword(hsl);
+    const name = convert.hsl.keyword(hsl);
+
+    const colornameValidator = convert.keyword.hsl(name);
+    var exact = true;
+    if (colornameValidator.toString() != hsl.toString()) {
+      exact = false;
+    }
 
     // HEX
     const hex = convert.hsl.hex(hsl);
@@ -126,7 +144,7 @@ router.get('/', (req, res) => {
 
     // Response
     return res.json({
-      colorname,
+      color: { name, exact },
       hex,
       hsl: { hue, saturation, luminance },
       hsv: { hue, saturation, value },
@@ -143,7 +161,13 @@ router.get('/', (req, res) => {
     const [c, m, y, k] = cmyk;
 
     // COLOR NAME
-    const colorname = convert.cmyk.keyword(cmyk);
+    const name = convert.cmyk.keyword(cmyk);
+
+    const colornameValidator = convert.keyword.cmyk(name);
+    var exact = true;
+    if (colornameValidator.toString() != cmyk.toString()) {
+      exact = false;
+    }
 
     // HEX
     const hex = convert.cmyk.hex(cmyk);
@@ -159,7 +183,7 @@ router.get('/', (req, res) => {
 
     // Response
     return res.json({
-      colorname,
+      color: { name, exact },
       hex,
       hsl: { hue, saturation, luminance },
       hsv: { hue, saturation, value },
@@ -179,7 +203,13 @@ router.get('/', (req, res) => {
     const [c, m, y, k] = convert.hsv.cmyk(hsv);
 
     // COLOR NAME
-    const colorname = convert.hsv.keyword(hsv);
+    const name = convert.hsv.keyword(hsv);
+
+    const colornameValidator = convert.keyword.hsv(name);
+    var exact = true;
+    if (colornameValidator.toString() != hsv.toString()) {
+      exact = false;
+    }
 
     // HEX
     const hex = convert.hsv.hex(hsv);
@@ -192,7 +222,7 @@ router.get('/', (req, res) => {
 
     // Response
     return res.json({
-      colorname,
+      color: { name, exact },
       hex,
       hsl: { hue, saturation, luminance },
       hsv: { hue, saturation, value },
