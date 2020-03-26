@@ -63,6 +63,9 @@ router.get('/', (req, res) => {
     // CMYK
     const [c, m, y, k] = convert.hex.cmyk(hex);
 
+    // IMAGE
+    const image = `https://color-converter.com/v1/convert?hex=${hex}&format=svg`;
+
     // Response
     return res.json({
       color: { name, exact },
@@ -71,6 +74,7 @@ router.get('/', (req, res) => {
       hsv: { hue, saturation, value },
       rgb: { red, green, blue },
       cmyk: { c, m, y, k },
+      image,
     });
   }
 
@@ -102,6 +106,9 @@ router.get('/', (req, res) => {
     // HSV
     const value = convert.rgb.hsv(rgb)[2];
 
+    // IMAGE
+    const image = `https://color-converter.com/v1/convert?rgb=${rgb}&format=svg`;
+
     // Response
     return res.json({
       color: { name, exact },
@@ -110,6 +117,7 @@ router.get('/', (req, res) => {
       hsv: { hue, saturation, value },
       rgb: { red, green, blue },
       cmyk: { c, m, y, k },
+      image,
     });
   }
 
@@ -132,6 +140,9 @@ router.get('/', (req, res) => {
     // RGB
     const [red, green, blue] = convert.keyword.rgb(name);
 
+    // IMAGE
+    const image = `https://color-converter.com/v1/convert?colorname=${colorname}&format=svg`;
+
     // Response
     return res.json({
       color: { name },
@@ -140,6 +151,7 @@ router.get('/', (req, res) => {
       hsv: { hue, saturation, value },
       rgb: { red, green, blue },
       cmyk: { c, m, y, k },
+      image,
     });
   }
 
@@ -171,6 +183,9 @@ router.get('/', (req, res) => {
     // RGB
     const [red, green, blue] = convert.hsl.rgb(hsl);
 
+    // IMAGE
+    const image = `https://color-converter.com/v1/convert?hex=${hex}&format=svg`;
+
     // Response
     return res.json({
       color: { name, exact },
@@ -179,6 +194,7 @@ router.get('/', (req, res) => {
       hsv: { hue, saturation, value },
       rgb: { red, green, blue },
       cmyk: { c, m, y, k },
+      image,
     });
   }
 
@@ -210,6 +226,9 @@ router.get('/', (req, res) => {
     // RGB
     const [red, green, blue] = convert.cmyk.rgb(cmyk);
 
+    // IMAGE
+    const image = `https://color-converter.com/v1/convert?cmyk=${cmyk}&format=svg`;
+
     // Response
     return res.json({
       color: { name, exact },
@@ -218,6 +237,7 @@ router.get('/', (req, res) => {
       hsv: { hue, saturation, value },
       rgb: { red, green, blue },
       cmyk: { c, m, y, k },
+      image,
     });
   }
 
@@ -249,6 +269,9 @@ router.get('/', (req, res) => {
     // RGB
     const [red, green, blue] = convert.hsv.rgb(hsv);
 
+    // IMAGE
+    const image = `https://color-converter.com/v1/convert?hsv=${hsv}&format=svg`;
+
     // Response
     return res.json({
       color: { name, exact },
@@ -257,6 +280,7 @@ router.get('/', (req, res) => {
       hsv: { hue, saturation, value },
       rgb: { red, green, blue },
       cmyk: { c, m, y, k },
+      image,
     });
   }
 });
