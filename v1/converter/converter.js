@@ -5,143 +5,148 @@ const errorHandler = require('../../helpers/messages');
 
 router.use(errorHandler);
 
-router.get('/rgb', (req, res) => {
-  // RGB
-  const rgb = req.query.value
-    .split(',')
-    .map(colorValue => parseInt(colorValue));
-  const [red, green, blue] = rgb;
+router.get('/', (req, res) => {
+  const queryString = req.query;
+  const urlParams = new URLSearchParams(queryString);
 
-  // CMYK
-  const [c, m, y, k] = convert.rgb.cmyk(rgb);
+  if (urlParams.has('hex')) {
+    // HEX
+    const hex = req.query.hex;
 
-  // COLOR NAME
-  const colorname = convert.rgb.keyword(rgb);
+    // COLOR NAME
+    const colorname = convert.hex.keyword(hex);
 
-  // HEX
-  const hex = convert.rgb.hex(rgb);
+    // RGB
+    const [red, green, blue] = convert.hex.rgb(hex);
 
-  // HSL
-  const [hue, saturation, luminance] = convert.rgb.hsl(rgb);
+    // HSL
+    const [hue, saturation, luminance] = convert.hex.hsl(hex);
 
-  // Response
-  return res.json({
-    colorname,
-    hex,
-    hsl: { hue, saturation, luminance },
-    rgb: { red, green, blue },
-    cmyk: { c, m, y, k },
-  });
-});
+    // CMYK
+    const [c, m, y, k] = convert.hex.cmyk(hex);
 
-router.get('/colorname', (req, res) => {
-  // COLOR NAME
-  const colorname = req.query.value;
+    // Response
+    return res.json({
+      colorname,
+      hex,
+      hsl: { hue, saturation, luminance },
+      rgb: { red, green, blue },
+      cmyk: { c, m, y, k },
+    });
+  }
 
-  // CMYK
-  const [c, m, y, k] = convert.keyword.cmyk(colorname);
+  if (urlParams.has('rgb')) {
+    // RGB
+    const rgb = req.query.rgb
+      .split(',')
+      .map(colorValue => parseInt(colorValue));
+    const [red, green, blue] = rgb;
 
-  // HEX
-  const hex = convert.keyword.hex(colorname);
+    // CMYK
+    const [c, m, y, k] = convert.rgb.cmyk(rgb);
 
-  // HSL
-  const [hue, saturation, luminance] = convert.keyword.hsl(colorname);
+    // COLOR NAME
+    const colorname = convert.rgb.keyword(rgb);
 
-  // RGB
-  const [red, green, blue] = convert.keyword.rgb(colorname);
+    // HEX
+    const hex = convert.rgb.hex(rgb);
 
-  // Response
-  return res.json({
-    colorname,
-    hex,
-    hsl: { hue, saturation, luminance },
-    rgb: { red, green, blue },
-    cmyk: { c, m, y, k },
-  });
-});
+    // HSL
+    const [hue, saturation, luminance] = convert.rgb.hsl(rgb);
 
-router.get('/hex', (req, res) => {
-  // HEX
-  const hex = req.query.value;
+    // Response
+    return res.json({
+      colorname,
+      hex,
+      hsl: { hue, saturation, luminance },
+      rgb: { red, green, blue },
+      cmyk: { c, m, y, k },
+    });
+  }
 
-  // COLOR NAME
-  const colorname = convert.hex.keyword(hex);
+  if (urlParams.has('colorname')) {
+    // COLOR NAME
+    const colorname = req.query.colorname;
 
-  // RGB
-  const [red, green, blue] = convert.hex.rgb(hex);
+    // CMYK
+    const [c, m, y, k] = convert.keyword.cmyk(colorname);
 
-  // HSL
-  const [hue, saturation, luminance] = convert.hex.hsl(hex);
+    // HEX
+    const hex = convert.keyword.hex(colorname);
 
-  // CMYK
-  const [c, m, y, k] = convert.hex.cmyk(hex);
+    // HSL
+    const [hue, saturation, luminance] = convert.keyword.hsl(colorname);
 
-  // Response
-  return res.json({
-    colorname,
-    hex,
-    hsl: { hue, saturation, luminance },
-    rgb: { red, green, blue },
-    cmyk: { c, m, y, k },
-  });
-});
+    // RGB
+    const [red, green, blue] = convert.keyword.rgb(colorname);
 
-router.get('/hsl', (req, res) => {
-  // HSL
-  const hsl = req.query.value
-    .split(',')
-    .map(colorValue => parseInt(colorValue));
-  const [hue, saturation, luminance] = hsl;
+    // Response
+    return res.json({
+      colorname,
+      hex,
+      hsl: { hue, saturation, luminance },
+      rgb: { red, green, blue },
+      cmyk: { c, m, y, k },
+    });
+  }
 
-  // CMYK
-  const [c, m, y, k] = convert.hsl.cmyk(hsl);
+  if (urlParams.has('hsl')) {
+    // HSL
+    const hsl = req.query.hsl
+      .split(',')
+      .map(colorValue => parseInt(colorValue));
+    const [hue, saturation, luminance] = hsl;
 
-  // COLOR NAME
-  const colorname = convert.hsl.keyword(hsl);
+    // CMYK
+    const [c, m, y, k] = convert.hsl.cmyk(hsl);
 
-  // HEX
-  const hex = convert.hsl.hex(hsl);
+    // COLOR NAME
+    const colorname = convert.hsl.keyword(hsl);
 
-  // RGB
-  const [red, green, blue] = convert.hsl.rgb(hsl);
+    // HEX
+    const hex = convert.hsl.hex(hsl);
 
-  // Response
-  return res.json({
-    colorname,
-    hex,
-    hsl: { hue, saturation, luminance },
-    rgb: { red, green, blue },
-    cmyk: { c, m, y, k },
-  });
-});
+    // RGB
+    const [red, green, blue] = convert.hsl.rgb(hsl);
 
-router.get('/cmyk', (req, res) => {
-  // CMYK
-  const cmyk = req.query.value
-    .split(',')
-    .map(colorValue => parseInt(colorValue));
-  const [c, m, y, k] = cmyk;
+    // Response
+    return res.json({
+      colorname,
+      hex,
+      hsl: { hue, saturation, luminance },
+      rgb: { red, green, blue },
+      cmyk: { c, m, y, k },
+    });
+  }
 
-  // COLOR NAME
-  const colorname = convert.cmyk.keyword(cmyk);
+  if (urlParams.has('cmyk')) {
+    // CMYK
+    const cmyk = req.query.cmyk
+      .split(',')
+      .map(colorValue => parseInt(colorValue));
+    const [c, m, y, k] = cmyk;
 
-  // HEX
-  const hex = convert.cmyk.hex(cmyk);
+    // COLOR NAME
+    const colorname = convert.cmyk.keyword(cmyk);
 
-  // HSL
-  const [hue, saturation, luminance] = convert.cmyk.hsl(cmyk);
+    // HEX
+    const hex = convert.cmyk.hex(cmyk);
 
-  // RGB
-  const [red, green, blue] = convert.cmyk.rgb(cmyk);
+    // HSL
+    const [hue, saturation, luminance] = convert.cmyk.hsl(cmyk);
 
-  // Response
-  return res.json({
-    colorname,
-    hex,
-    hsl: { hue, saturation, luminance },
-    rgb: { red, green, blue },
-    cmyk: { c, m, y, k },
-  });
+    // RGB
+    const [red, green, blue] = convert.cmyk.rgb(cmyk);
+
+    // Response
+    return res.json({
+      colorname,
+      hex,
+      hsl: { hue, saturation, luminance },
+      rgb: { red, green, blue },
+      cmyk: { c, m, y, k },
+    });
+  }
 });
 
 module.exports = router;

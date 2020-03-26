@@ -14,7 +14,7 @@
 ![request](https://img.shields.io/badge/GET-orange.svg) &nbsp; To convert the colors, use the following get requests. You will get the response in JSON format.
 
 **Convert RGB**
-[https://color-converter.com/v1/convert/rgb?value=25,25,112](https://color-converter.com/v1/convert/rgb?value=25,25,112)
+[https://color-converter.com/v1/convert?rgb=25,25,112](https://color-converter.com/v1/convert?rgb=25,25,112)
 
 ```
 {
@@ -40,16 +40,16 @@
 ```
 
 **Convert color name**
-[https://color-converter.com/v1/convert/colorname?value=midnightblue](https://color-converter.com/v1/convert/colorname?value=midnightblue)
+[https://color-converter.com/v1/convert?colorname=midnightblue](https://color-converter.com/v1/convert?colorname=midnightblue)
 
 **Convert HEX**
-[https://color-converter.com/v1/convert/hex?value=191970](https://color-converter.com/v1/convert/hex?value=191970)
+[https://color-converter.com/v1/convert?hex=191970](https://color-converter.com/v1/convert?hex=191970)
 
 **Convert HSL**
-[https://color-converter.com/v1/convert/hsl?value=240,64,27](https://color-converter.com/v1/convert/hsl?value=240,64,27)
+[https://color-converter.com/v1/convert?hsl=240,64,27](https://color-converter.com/v1/convert?hsl=240,64,27)
 
 **Convert CMYK**
-[https://color-converter.com/v1/convert/cmyk?value=78,78,0,56](https://color-converter.com/v1/convert/cmyk?value=78,78,0,56)
+[https://color-converter.com/v1/convert?cmyk=78,78,0,56](https://color-converter.com/v1/convert?cmyk=78,78,0,56)
 
 ---
 
