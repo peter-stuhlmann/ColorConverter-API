@@ -25,6 +25,11 @@
         "saturation": 64,
         "luminance": 27
     },
+    "hsv": {
+        "hue": 240,
+        "saturation": 64,
+        "value": 44
+    },
     "rgb": {
         "red": 25,
         "green": 25,
@@ -47,6 +52,9 @@
 
 **Convert HSL**
 [https://color-converter.com/v1/convert?hsl=240,64,27](https://color-converter.com/v1/convert?hsl=240,64,27)
+
+**Convert HSV**
+[https://color-converter.com/v1/convert?hsv=240,64,44](https://color-converter.com/v1/convert?hsv=240,64,44)
 
 **Convert CMYK**
 [https://color-converter.com/v1/convert?cmyk=78,78,0,56](https://color-converter.com/v1/convert?cmyk=78,78,0,56)

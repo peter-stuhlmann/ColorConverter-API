@@ -22,6 +22,9 @@ router.get('/', (req, res) => {
     // HSL
     const [hue, saturation, luminance] = convert.hex.hsl(hex);
 
+    // HSV
+    const value = convert.rgb.hsv(hex)[2];
+
     // CMYK
     const [c, m, y, k] = convert.hex.cmyk(hex);
 
@@ -30,6 +33,7 @@ router.get('/', (req, res) => {
       colorname,
       hex,
       hsl: { hue, saturation, luminance },
+      hsv: { hue, saturation, value },
       rgb: { red, green, blue },
       cmyk: { c, m, y, k },
     });
@@ -54,11 +58,15 @@ router.get('/', (req, res) => {
     // HSL
     const [hue, saturation, luminance] = convert.rgb.hsl(rgb);
 
+    // HSV
+    const value = convert.rgb.hsv(rgb)[2];
+
     // Response
     return res.json({
       colorname,
       hex,
       hsl: { hue, saturation, luminance },
+      hsv: { hue, saturation, value },
       rgb: { red, green, blue },
       cmyk: { c, m, y, k },
     });
@@ -77,6 +85,9 @@ router.get('/', (req, res) => {
     // HSL
     const [hue, saturation, luminance] = convert.keyword.hsl(colorname);
 
+    // HSV
+    const value = convert.keyword.hsv(colorname)[2];
+
     // RGB
     const [red, green, blue] = convert.keyword.rgb(colorname);
 
@@ -85,6 +96,7 @@ router.get('/', (req, res) => {
       colorname,
       hex,
       hsl: { hue, saturation, luminance },
+      hsv: { hue, saturation, value },
       rgb: { red, green, blue },
       cmyk: { c, m, y, k },
     });
@@ -106,6 +118,9 @@ router.get('/', (req, res) => {
     // HEX
     const hex = convert.hsl.hex(hsl);
 
+    // HSV
+    const value = convert.hsl.hsv(hsl)[2];
+
     // RGB
     const [red, green, blue] = convert.hsl.rgb(hsl);
 
@@ -114,6 +129,7 @@ router.get('/', (req, res) => {
       colorname,
       hex,
       hsl: { hue, saturation, luminance },
+      hsv: { hue, saturation, value },
       rgb: { red, green, blue },
       cmyk: { c, m, y, k },
     });
@@ -135,6 +151,9 @@ router.get('/', (req, res) => {
     // HSL
     const [hue, saturation, luminance] = convert.cmyk.hsl(cmyk);
 
+    // HSV
+    const value = convert.cmyk.hsv(cmyk)[2];
+
     // RGB
     const [red, green, blue] = convert.cmyk.rgb(cmyk);
 
@@ -143,6 +162,40 @@ router.get('/', (req, res) => {
       colorname,
       hex,
       hsl: { hue, saturation, luminance },
+      hsv: { hue, saturation, value },
+      rgb: { red, green, blue },
+      cmyk: { c, m, y, k },
+    });
+  }
+
+  if (urlParams.has('hsv')) {
+    // HSV
+    const hsv = req.query.hsv
+      .split(',')
+      .map(colorValue => parseInt(colorValue));
+    const [hue, saturation, value] = hsv;
+
+    // CMYK
+    const [c, m, y, k] = convert.hsv.cmyk(hsv);
+
+    // COLOR NAME
+    const colorname = convert.hsv.keyword(hsv);
+
+    // HEX
+    const hex = convert.hsv.hex(hsv);
+
+    // HSL
+    const [luminance] = convert.hsv.hsl(hsv);
+
+    // RGB
+    const [red, green, blue] = convert.hsv.rgb(hsv);
+
+    // Response
+    return res.json({
+      colorname,
+      hex,
+      hsl: { hue, saturation, luminance },
+      hsv: { hue, saturation, value },
       rgb: { red, green, blue },
       cmyk: { c, m, y, k },
     });
